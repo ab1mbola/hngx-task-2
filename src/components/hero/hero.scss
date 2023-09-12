@@ -1,0 +1,85 @@
+@use "../../styles/base/variables" as *;
+
+.hero {
+  max-width: 1440px;
+  margin: auto;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .description-box {
+    width: 404px;
+
+    .heading {
+      h1 {
+        font-size: 48px;
+        color: $white;
+        font-weight: 700;
+        margin: 1rem 0px;
+        line-height: 56px;
+        letter-spacing: 2px;
+      }
+    }
+
+    .rating {
+      display: flex;
+      align-items: center;
+      width: 184px;
+      justify-content: space-between;
+      // gap: 5px;
+
+      .imdb {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        p {
+          color: $white;
+          font-size: 12px;
+        }
+      }
+
+      .rotten-tomatoes {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        p {
+          color: $white;
+          font-size: 12px;
+        }
+      }
+    }
+
+    .description {
+      width: 302px;
+
+      p {
+        color: $white;
+        margin: 1rem 0;
+        font-size: 14px;
+        font-weight: 500;
+      }
+    }
+
+    .watch-trailer {
+      button {
+        background: $rose-700;
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+        gap: 10px;
+        border-radius: 6px;
+        border: none;
+        padding: 6px 16px;
+
+        &:hover {
+          cursor: pointer;
+          background: $rose-600;
+          transition: all 0.3s ease-in;
+        }
+      }
+    }
+  }
+}

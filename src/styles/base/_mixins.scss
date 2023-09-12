@@ -1,0 +1,45 @@
+@use "./variables" as *;
+
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&display=swap");
+
+@mixin font-dmSans {
+  font-family: "DM Sans", sans-serif;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin breakpoint($point) {
+  @if $point == phone {
+    @media (max-width: $phone) {
+      @content;
+    }
+  } @else if $point == tablet {
+    @media (max-width: $tablet) {
+      @content;
+    }
+  } @else if $point == desktop {
+    @media (max-width: $desktop) {
+      @content;
+    }
+  }
+}

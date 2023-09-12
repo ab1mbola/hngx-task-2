@@ -1,0 +1,45 @@
+@use "../../styles/base/variables" as *;
+
+.featured-container {
+  max-width: 1440px;
+  margin: auto;
+  padding: 50px;
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+
+  .featured-text-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
+
+    h2 {
+      font-size: 36px;
+      font-weight: 700;
+    }
+
+    p {
+      a {
+        text-decoration: none;
+        color: $rose-700;
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+    }
+  }
+
+  .featured-movies {
+    width: 100%;
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 80px;
+      margin: 20px 0px;
+    }
+  }
+}
