@@ -26,7 +26,7 @@ function App() {
       console.log("First five possters:", moviePosters);
       setBackgroundImage(`https://image.tmdb.org/t/p/w500${moviePoster}`);
     } catch (err) {
-      console.log("Error fetching movie data:", err);
+      console.log("Error fetching movie data::", err);
     }
   };
 
