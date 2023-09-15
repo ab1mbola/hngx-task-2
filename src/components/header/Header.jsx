@@ -2,15 +2,15 @@ import "./header.scss";
 import Navbar from "../navbar/Navbar";
 import Hero from "../hero/Hero";
 
-const Header = ({ backgroundImage }) => {
-  const containerStyle = {
-    backgroundImage: `url(${backgroundImage})`,
-  };
+const Header = ({ movies, setMovies, isSearched, setIsSearched, input, setInput }) => {
+  // const containerStyle = {
+  //   backgroundImage: `url(${backgroundImage})`,
+  // };
 
   return (
-    <div className="container" style={containerStyle}>
-      <Navbar />
-      <Hero />
+    <div className="container">
+      {/* <Navbar /> */}
+      <Hero movies={movies} setMovies={setMovies} isSearched={isSearched} setIsSearched={setIsSearched} input={input} setInput={setInput}/>
     </div>
   );
 };

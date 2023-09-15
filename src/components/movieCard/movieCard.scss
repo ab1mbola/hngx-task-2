@@ -1,11 +1,17 @@
 @use "../../styles/base/variables" as *;
 
 .card {
-  // width: 250px;
+  width: fit-content;
+  padding: 10px;
+  margin: auto;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: all 0.5s ease-in-out;
+  }
 
   .card-body {
-    width: 100%;
-
+    width: 250px;
     .card-body-img {
       position: relative;
 
@@ -31,7 +37,6 @@
           &:hover {
             background: $rose-300;
             transition: all 0.5s ease-in-out;
-
           }
 
           svg {

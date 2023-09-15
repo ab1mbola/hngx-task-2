@@ -3,45 +3,59 @@ import "./styles/App.scss";
 import Header from "./components/header/Header";
 import FeaturedMovie from "./components/featuredMovie/FeaturedMovie";
 import Footer from "./components/footer/Footer";
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Navbar from "./components/navbar/Navbar";
+import Homepage from "./components/hompage/Homepage";
+import Searchbar from "./components/searchbar/Searchbar";
+import MoviesPage from "./components/moviesPage/MoviesPage";
 
 function App() {
-  const [backgroundImage, setBackgroundImage] = useState("");
-  const [moviePosters, setMoviePosters] = useState([]);
-
-  const apiKey = "af6502e937447032ba3ae4a03d480426";
-  const apiUrl = `https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&primary_release_year=2022&sort_by=vote_average.desc&vote_count.gte=1000`;
-
-  const fetchPoster = async () => {
-    try {
-      const response = await axios.get(apiUrl);
-
-      const moviePoster = response.data.results[0]?.poster_path || "";
-      const moviePosters = response.data.results
-        .slice(0, 5)
-        .map((movie) => movie.poster_path || "");
-      setMoviePosters(moviePosters);
-      console.log("First five possters:", moviePosters);
-      setBackgroundImage(`https://image.tmdb.org/t/p/w500${moviePoster}`);
-    } catch (err) {
-      console.log("Error fetching movie data::", err);
-    }
-  };
+  const [movies, setMovies] = useState([]);
+  const [input, setInput] = useState("");
 
   useEffect(() => {
-    fetchPoster();
+    fetch(
+      "https://api.themoviedb.org/3/movie/top_rated?api_key=af6502e937447032ba3ae4a03d480426"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setMovies(data.results.slice(0, 10));
+      });
   }, []);
+
+  // const [moviePosters, setMoviePosters] = useState([]);
+
+  // const apiKey = "af6502e937447032ba3ae4a03d480426";
+  const [isSearched, setIsSearched] = useState(false);
+
+  console.log(movies);
 
   return (
     <>
-      {/* <Routes>
-      <Route path="/" element={<Header />} />
-    </Routes> */}
-      <Header backgroundImage={backgroundImage} />
-      <FeaturedMovie />
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <Homepage
+                movies={movies}
+                setMovies={setMovies}
+                isSearched={isSearched}
+                setIsSearched={setIsSearched}
+                input={input}
+                setInput={setInput}
+              />
+            }
+          />
+        </Routes>
+        <Routes>
+          <Route path="/movie/:id" element={<MoviesPage movies={movies} />} />
+        </Routes>
+      </BrowserRouter>
+
+      {/* <MoviesPage /> */}
     </>
   );
 }
