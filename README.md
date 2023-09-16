@@ -1,9 +1,27 @@
 # MovieBox
 
+## Build Setup
+
 A movie discovery web application that allows users to search for movies, view details about them.
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+### To run this application, run the following commands:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+yarn
+
+yarn dev
+```
+
+### If you do not have yarn installed, delete the `yarn.lock` file and install via npm,
+
+```bash
+npm install
+
+npm run dev
+```
+
+### Or install yarn:
+
+```bash
+npm install --global yarn
+```
