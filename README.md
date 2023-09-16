@@ -2,7 +2,7 @@
 
 ## Build Setup
 
-A movie discovery web application that allows users to search for movies, view details about them.
+A movie discovery web application that allows users to search for movies, and view details about them.
 
 ### To run this application, run the following commands:
 
