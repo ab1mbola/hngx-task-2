@@ -129,9 +129,15 @@ const Hero = ({
             input={input}
             setInput={setInput}
           />
-          <h2 className="search-results">
-            Here are the results for <span>"{input}"</span>{" "}
-          </h2>
+          {movies.length === 0 ? ( // Check if there are no search results
+            <h2 className="search-results">
+              No results found for <span>"{input}"</span>
+            </h2>
+          ) : (
+            <h2 className="search-results">
+              Here are the results for <span>"{input}"</span>
+            </h2>
+          )}
         </div>
       )}
     </section>

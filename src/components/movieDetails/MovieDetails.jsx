@@ -35,6 +35,22 @@ const MovieDetails = ({ movies }) => {
     getMovie();
   }, [movieId]);
 
+  const convertToUTC = (dateString) => {
+    const localDate = new Date(dateString);
+    const utcDate = new Date(
+      Date.UTC(
+        localDate.getUTCFullYear(),
+        localDate.getUTCMonth(),
+        localDate.getUTCDate(),
+        localDate.getUTCHours(),
+        localDate.getUTCMinutes(),
+        localDate.getUTCSeconds()
+      )
+    );
+
+    return utcDate.toISOString();
+  };
+
   return (
     <div className="movie-page-container">
       <div className="movie-page-content">
@@ -62,10 +78,11 @@ const MovieDetails = ({ movies }) => {
                             </span>{" "}
                             •{" "}
                             <span data-testid="movie-release-date">
-                            {/* {new Date(movie?.release_date).toISOString()} */}
+                              {convertToUTC(movies.release_date)}
                               {/* {movies.release_date} */}
                             </span>{" "}
-                            • <span data-testid="movie-runtime">{`${movie?.runtime}mins`}</span>
+                            •{" "}
+                            <span data-testid="movie-runtime">{`${movie?.runtime}mins`}</span>
                           </p>
                           {genreNames?.map((value) => (
                             <button>{value}</button>
@@ -80,7 +97,7 @@ const MovieDetails = ({ movies }) => {
                             {movies.overview}
                           </p>
 
-                          <div className="people">
+                          {/* <div className="people">
                             <p className="director">
                               Director: <a href="">fhhd</a>
                             </p>
@@ -100,7 +117,7 @@ const MovieDetails = ({ movies }) => {
                               Awards nominations
                               <KeyboardArrowDownIcon />
                             </span>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                       <div className="right"></div>

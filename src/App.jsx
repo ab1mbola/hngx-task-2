@@ -1,14 +1,8 @@
 import "./styles/App.scss";
-// import Navbar from "./components/navbar/Navbar";
-import Header from "./components/header/Header";
-import FeaturedMovie from "./components/featuredMovie/FeaturedMovie";
-import Footer from "./components/footer/Footer";
 import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
-import Navbar from "./components/navbar/Navbar";
 import Homepage from "./components/hompage/Homepage";
-import Searchbar from "./components/searchbar/Searchbar";
+import ErrorPage from "./components/errorPage/ErrorPage";
 import MoviesPage from "./components/moviesPage/MoviesPage";
 
 function App() {
@@ -30,30 +24,41 @@ function App() {
   // const apiKey = "af6502e937447032ba3ae4a03d480426";
   const [isSearched, setIsSearched] = useState(false);
 
+  const error = {
+    code: "ERR_BAD_REQUEST",
+    message: "Request failed with status code 404",
+  };
+
   console.log(movies);
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <Homepage
-                movies={movies}
-                setMovies={setMovies}
-                isSearched={isSearched}
-                setIsSearched={setIsSearched}
-                input={input}
-                setInput={setInput}
-              />
-            }
-          />
-        </Routes>
-        <Routes>
-          <Route path="/movie/:id" element={<MoviesPage movies={movies} />} />
-        </Routes>
-      </BrowserRouter>
+      <ErrorPage>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Homepage
+                  movies={movies}
+                  setMovies={setMovies}
+                  isSearched={isSearched}
+                  setIsSearched={setIsSearched}
+                  input={input}
+                  setInput={setInput}
+                />
+              }
+            />
+          </Routes>
+          <Routes>
+            <Route path="/movie/:id" element={<MoviesPage movies={movies} />} />
+          </Routes>
+
+          {/* <Routes>
+          <Route path="*" element={<ErrorPage />} error={error} />
+        </Routes> */}
+        </BrowserRouter>
+      </ErrorPage>
 
       {/* <MoviesPage /> */}
     </>
